@@ -1,8 +1,11 @@
 var five = require('./node-five'),
-    yoko = 300, tate = 200
+    yoko = 300, tate = 200,
     window = new five.Window(yoko, tate),
     canvas = new five.Canvas(window),
     ctx = canvas.getContext('2d');
+
+canvas.width = window.width;
+canvas.height = window.height;
 
 var rr = function(min,max){
   var range = max+1 - min;
