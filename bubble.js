@@ -15,9 +15,9 @@ function Color(){
     switch(args.shift()){
       case '-c':
       case '--color':
-        if(!set.contains(color))
+        this.kind_index = this.kind_set.indexOf(args.shift());
+        if(this.kind_index == -1)
           error_usage();
-        this.kind_index = this.set.indexOf(args.shift());
         break;
       default:
         error_usage();
