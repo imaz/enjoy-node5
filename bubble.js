@@ -31,6 +31,7 @@ function Color(){
 };
 
 function Bubble(){
+  var color = new Color();
   var five = require('./node-five'),
       yoko = 300, tate = 200,
       window = new five.Window(yoko, tate),
@@ -44,7 +45,6 @@ function Bubble(){
   bgImage.src = __dirname + '/images/sea.png';
   ctx.drawImage(bgImage,0,0);
 
-  var color = new Color();
   var timer = setInterval(function(){
       ctx.fillStyle = color.detail();
       ctx.fillText(rr(0,1)==0?'o':'O', rr(1,yoko), rr(1,tate));
