@@ -1,37 +1,56 @@
-var five = require('./node-five'),
-    yoko = 300, tate = 200,
-    window = new five.Window(yoko, tate),
-    canvas = new five.Canvas(window),
-    ctx = canvas.getContext('2d');
-
-canvas.width = window.width;
-canvas.height = window.height;
-
 var rr = function(min,max){
   var range = max+1 - min;
   return Math.floor(Math.random() * range) + min;
-}
-
-var color = function(){
-  switch(rr(1,5)){
-    case 1:
-      return 'darkblue';
-    case 2:
-      return 'midiumblue';
-    case 3:
-      return 'dodgerblue';
-    case 4:
-      return 'lightskyblue';
-    case 5:
-      return 'aliceblue';
-  }
 };
 
-var bgImage = new five.Image();
-bgImage.src = __dirname + '/images/sea.png';
-ctx.drawImage(bgImage,0,0);
+function Color(){
+  this.kind_index = 0;
+  var error_usage = function(){
+    console.error('Usage: node bubble.js [--color (blue|red|yellow|green]');
+    process.exit(1);
+  };
+  var args = process.argv.slice(2);
+  this.kind_set = ['blue','red','yellow','green'];
+  while(args.length){
+    switch(args.shift()){
+      case '-c':
+      case '--color':
+        if(!set.contains(color))
+          error_usage();
+        this.kind_index = this.set.indexOf(args.shift());
+        break;
+      default:
+        error_usage();
+        break;
+    }
+  }
+  var color_detail = ['darkblue','midiumblue','dodgerblue','lightskyblue','aliceblue'];
+  this.detail= function(){
+    return color_detail[rr(1,5)+this.kind_index*5];
+  };
+};
 
-var timer = setInterval(function(){
-  ctx.fillStyle = color();
-  ctx.fillText(rr(0,1)==0?'o':'O', rr(1,yoko), rr(1,tate));
-},100);
+function Bubble(){
+  var five = require('./node-five'),
+      yoko = 300, tate = 200,
+      window = new five.Window(yoko, tate),
+      canvas = new five.Canvas(window),
+      ctx = canvas.getContext('2d');
+
+  canvas.width = window.width;
+  canvas.height = window.height;
+
+  var bgImage = new five.Image();
+  bgImage.src = __dirname + '/images/sea.png';
+  ctx.drawImage(bgImage,0,0);
+
+  var color = new Color();
+  var timer = setInterval(function(){
+      ctx.fillStyle = color.detail();
+      ctx.fillText(rr(0,1)==0?'o':'O', rr(1,yoko), rr(1,tate));
+      },100);
+}
+
+(function(){
+  Bubble();
+})();
