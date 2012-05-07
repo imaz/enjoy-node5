@@ -3,5 +3,6 @@
 , "author": "imaz"
 , "main": "./bubble.js"
 , "dependencies": {
+    "node-five": "git://github.com/arturadib/node-five.git"
   }
 }

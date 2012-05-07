@@ -32,7 +32,7 @@ function Color(){
 
 function Bubble(){
   var color = new Color();
-  var five = require('./node-five'),
+  var five = require('node-five'),
       yoko = 300, tate = 200,
       window = new five.Window(yoko, tate),
       canvas = new five.Canvas(window),
