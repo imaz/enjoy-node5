@@ -1,3 +1,9 @@
+
+var error_usage = function(){
+  console.error('Usage: node bubble.js [--color (blue|red|yellow|green)]');
+  process.exit(1);
+};
+
 var rr = function(min,max){
   var range = max+1 - min;
   return Math.floor(Math.random() * range) + min;
@@ -5,10 +11,6 @@ var rr = function(min,max){
 
 function Color(){
   this.kind_index = 0;
-  var error_usage = function(){
-    console.error('Usage: node bubble.js [--color (blue|red|yellow|green]');
-    process.exit(1);
-  };
   var args = process.argv.slice(2);
   this.kind_set = ['blue','red','yellow','green'];
   while(args.length){
