@@ -27,7 +27,12 @@ var rr = function(min,max){
 function Color(){
   this.index = 0;
   this.set = ['blue','red','yellow','green'];
-  var detail = ['darkblue','midiumblue','dodgerblue','lightskyblue','aliceblue'];
+  var detail = [
+    'darkblue','midiumblue','dodgerblue','lightskyblue','aliceblue'
+    ,'darkred','crimson','indianred','lightcoral','mistyrose'
+    ,'darkorange','orange','gold','yellow','khaki'
+    ,'darkgreen','green','forestgreen','limegreen','lightgreen'
+    ];
   this.detail= function(){
     return detail[rr(1,5)+this.index*5];
   };
