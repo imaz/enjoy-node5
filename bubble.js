@@ -34,7 +34,7 @@ function Color(){
     ,'darkgreen','green','forestgreen','limegreen','lightgreen'
     ];
   this.detail= function(){
-    return detail[rr(1,5)+this.index*5];
+    return detail[rr(0,4)+this.index*5];
   };
 };
 
